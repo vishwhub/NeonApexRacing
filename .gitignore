@@ -1,0 +1,42 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Core development settings
+appsettings.Development.json
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Local databases
+*.mdf
+*.ldf
+*.ndf
+
+# Test / coverage
+TestResults/
+coverage/
+
+# Publish output
+publish/
+Publish/
+
+# Node
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,47 @@
+﻿@model List<NeonApexRacing.Models.Score>
+
+@{
+    ViewData["Title"] = "Leaderboard";
+}
+
+<section class="leaderboard-page">
+    <p class="eyebrow">HALL OF FAME</p>
+    <h1>Top Drivers</h1>
+
+    @if (Model.Count == 0)
+    {
+        <p class="empty-message">
+            No scores yet. Complete a race and become the first driver here.
+        </p>
+    }
+    else
+    {
+        <div class="table-wrapper">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Driver</th>
+                        <th>Score</th>
+                        <th>Distance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        var score = Model[i];
+
+                        <tr>
+                            <td>#@(i + 1)</td>
+                            <td>@score.PlayerName</td>
+                            <td>@score.Points.ToString("N0")</td>
+                            <td>@score.Distance.ToString("N0") m</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <a class="leaderboard-link" href="/">Start Racing</a>
+</section>

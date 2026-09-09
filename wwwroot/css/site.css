@@ -1,0 +1,330 @@
+:root {
+    --background: #06101b;
+    --panel: #101d2c;
+    --line: #31455b;
+    --white: #f5f8ff;
+    --muted: #9aaabd;
+    --mint: #2af5c8;
+    --pink: #ff3e70;
+    --road: #252c35;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle at 20% 10%, #15364d 0, transparent 32%), radial-gradient(circle at 85% 90%, #252050 0, transparent 32%), var(--background);
+}
+
+.topbar {
+    width: min(960px, 94vw);
+    margin: 0 auto;
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+    .brand span {
+        color: var(--mint);
+    }
+
+.topbar-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .topbar-link:hover {
+        color: var(--mint);
+    }
+
+.game-shell {
+    position: relative;
+    width: min(480px, 94vw);
+    margin: 10px auto 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 24px 75px rgba(0, 0, 0, 0.5);
+}
+
+#raceCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--road);
+}
+
+.hud {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(4, 10, 17, 0.9), transparent);
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.hud small,
+.eyebrow {
+    color: var(--mint);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+}
+
+.hud strong {
+    margin-top: 3px;
+    font-size: 22px;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    padding: 120px 25px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(5, 13, 22, 0.86);
+}
+
+    .overlay h1,
+    .leaderboard-page h1,
+    .instructions h2 {
+        margin: 7px 0;
+        font-size: 48px;
+        letter-spacing: 2px;
+    }
+
+    .overlay p {
+        color: var(--muted);
+        line-height: 1.5;
+    }
+
+.hidden {
+    display: none;
+}
+
+button,
+.leaderboard-link {
+    margin-top: 14px;
+    min-width: 185px;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 8px;
+    color: #06110e;
+    background: var(--mint);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+    button:hover,
+    .leaderboard-link:hover {
+        filter: brightness(1.1);
+    }
+
+    button:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+.secondary-button {
+    color: var(--white);
+    background: transparent;
+    border: 1px solid #66798c;
+}
+
+#playerName {
+    width: min(260px, 100%);
+    margin-top: 13px;
+    padding: 12px;
+    color: var(--white);
+    background: #172536;
+    border: 1px solid #516579;
+    border-radius: 7px;
+    outline: none;
+    font-size: 15px;
+}
+
+    #playerName:focus {
+        border-color: var(--mint);
+    }
+
+.hint {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+#saveStatus {
+    min-height: 20px;
+    color: var(--mint);
+    font-size: 13px;
+}
+
+    #saveStatus a {
+        color: var(--mint);
+    }
+
+.instructions,
+.leaderboard-page {
+    width: min(720px, 94vw);
+    margin: 34px auto;
+    padding: 28px;
+    background: rgba(16, 29, 44, 0.75);
+    border: 1px solid #2c4056;
+    border-radius: 14px;
+}
+
+    .instructions h2 {
+        font-size: 29px;
+    }
+
+    .instructions p,
+    .empty-message {
+        color: var(--muted);
+        line-height: 1.7;
+    }
+
+    .leaderboard-page h1 {
+        font-size: 43px;
+    }
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    margin: 22px 0;
+    border-collapse: collapse;
+}
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 14px 10px;
+        text-align: left;
+        border-bottom: 1px solid #2d4054;
+    }
+
+    .leaderboard-table th {
+        color: var(--mint);
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .leaderboard-table td:first-child {
+        color: var(--pink);
+        font-weight: bold;
+    }
+
+@media (max-width: 500px) {
+    .hud {
+        padding: 12px;
+    }
+
+        .hud strong {
+            font-size: 17px;
+        }
+
+    .overlay {
+        padding-top: 95px;
+    }
+
+        .overlay h1 {
+            font-size: 39px;
+        }
+}
+/* High-graphics Three.js viewport */
+.game-shell-3d {
+    background: #02070d;
+    border-color: #3a6079;
+}
+
+#gameContainer {
+    width: 100%;
+    height: 720px;
+    overflow: hidden;
+    background: #02070d;
+}
+
+    #gameContainer canvas {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        outline: none;
+    }
+
+/* Makes the 3D viewport feel more cinematic. */
+.game-shell-3d::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.45), inset 0 0 25px rgba(34, 222, 255, 0.12);
+}
+
+.game-shell-3d .hud,
+.game-shell-3d .overlay {
+    z-index: 3;
+}
+
+@media (max-width: 500px) {
+    #gameContainer {
+        height: 620px !important;
+    }
+}
+
+.camera-controls {
+    position: absolute;
+    z-index: 2;
+    top: 83px;
+    left: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.camera-button {
+    min-width: auto;
+    margin: 0;
+    padding: 8px 11px;
+    color: #dcefff;
+    background: rgba(5, 17, 29, 0.78);
+    border: 1px solid rgba(134, 208, 255, 0.45);
+    border-radius: 5px;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+}
+
+    .camera-button:hover,
+    .camera-button.active {
+        color: #04110e;
+        background: #2af5c8;
+        border-color: #2af5c8;
+    }

@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Neon Apex 3D Racing";
+}
+
+<section class="game-shell game-shell-3d">
+    <div class="hud">
+        <div class="hud-item">
+            <small>SCORE</small>
+            <strong id="score">0</strong>
+        </div>
+
+        <div class="hud-item">
+            <small>DISTANCE</small>
+            <strong id="distance">0 m</strong>
+        </div>
+
+        <div class="hud-item">
+            <small>HEALTH</small>
+            <strong id="lives">♥ ♥ ♥</strong>
+        </div>
+    </div>
+
+    <div class="camera-controls" aria-label="Camera controls">
+        <button class="camera-button active" data-camera="chase">
+            Chase
+        </button>
+
+        <button class="camera-button" data-camera="hood">
+            Hood
+        </button>
+
+        <button class="camera-button" data-camera="cockpit">
+            Cockpit
+        </button>
+
+        <button class="camera-button" data-camera="cinematic">
+            Cinematic
+        </button>
+    </div>
+
+    <div id="gameContainer" aria-label="3D car racing game"></div>
+
+    <div id="startScreen" class="overlay">
+        <p class="eyebrow">HIGH PERFORMANCE CIRCUIT</p>
+        <h1>NEON APEX 3D</h1>
+        <p>Race through a living world of speed, weather, and traffic.</p>
+
+        <button id="startButton">Start Race</button>
+
+        <p class="hint">
+            Use ← / → or A / D to steer.<br />
+            Press Space to start or restart.
+        </p>
+    </div>
+
+    <div id="gameOverScreen" class="overlay hidden">
+        <p class="eyebrow">RACE COMPLETE</p>
+        <h1>WRECKED</h1>
+
+        <p id="finalStats"></p>
+
+        <input id="playerName"
+               type="text"
+               maxlength="24"
+               value="Driver"
+               placeholder="Enter driver name" />
+
+        <button id="saveButton">Save Score</button>
+        <button id="restartButton" class="secondary-button">Race Again</button>
+
+        <p id="saveStatus"></p>
+        <p class="hint">Press Space to race again.</p>
+    </div>
+</section>
+
+<section class="instructions">
+    <h2>3D Racing Demo</h2>
+    <p>
+        This browser version will use 3D cars, dynamic lights, shadows,
+        cinematic camera movement, rain effects, and the existing SQL Server
+        leaderboard.
+    </p>
+
+    <a class="leaderboard-link" href="/leaderboard">
+        View Leaderboard
+    </a>
+</section>
+
+@section Scripts {
+    <script type="module" src="~/js/game3d.js" asp-append-version="true"></script>
+}
